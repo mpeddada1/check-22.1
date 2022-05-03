@@ -72,4 +72,28 @@ New value: com.oracle.svm.core.jdk.ProtectionDomainSupport@2424686b
 ```
 Related to: https://github.com/oracle/graal/issues/4518
 
-Note that both setups work fine when building with 22.0.0.2
+Building with **21.3.0**:
+
+```
+openjdk version "11.0.13" 2021-10-19
+OpenJDK Runtime Environment GraalVM CE 21.3.0 (build 11.0.13+7-jvmci-21.3-b05)
+OpenJDK 64-Bit Server VM GraalVM CE 21.3.0 (build 11.0.13+7-jvmci-21.3-b05, mixed mode, sharing)
+```
+
+Results in:
+
+```
+INFO] Executing: /usr/local/google/home/mpeddada/.sdkman/candidates/java/21.3.0.r11-grl/bin/native-image @/tmp/native-image873591198839571670args org.graalvm.junit.platform.NativeImageJUnitLauncher
+Warning: Ignoring server-mode native-image argument --no-server.
+Fatal error:com.oracle.svm.core.util.VMError$HostedError: Option name "PrintFlags" has multiple definitions: com.oracle.svm.common.option.CommonOptions.PrintFlags and com.oracle.svm.core.SubstrateOptions.PrintFlags
+	at com.oracle.svm.core.util.VMError.shouldNotReachHere(VMError.java:68)
+	at com.oracle.svm.hosted.option.HostedOptionParser.collectOptions(HostedOptionParser.java:87)
+	at com.oracle.svm.hosted.option.HostedOptionParser.<init>(HostedOptionParser.java:60)
+	at com.oracle.svm.hosted.NativeImageGeneratorRunner.buildImage(NativeImageGeneratorRunner.java:277)
+	at com.oracle.svm.hosted.NativeImageGeneratorRunner.build(NativeImageGeneratorRunner.java:569)
+	at com.oracle.svm.hosted.NativeImageGeneratorRunner.main(NativeImageGeneratorRunner.java:122)
+	at com.oracle.svm.hosted.NativeImageGeneratorRunner$JDK9Plus.main(NativeImageGeneratorRunner.java:599)
+
+```
+
+**Note that both setups work fine when building with 22.0.0.2.**
