@@ -124,7 +124,7 @@ Fatal error:com.oracle.svm.core.util.VMError$HostedError: Option name "PrintFlag
 1) Update version of graal-sdk to 22.1.0 in gax [dependencies.properties](https://github.com/googleapis/gax-java/blob/main/dependencies.properties). 
 2) Call `./gradlew publishToMavenLocal`
 3) Make sure that the gax version in shared-dependencies is set to the SNAPSHOT version you're using.
-4) Update the version in `shared-dependencies` to the SNAPSHOT version. 
+4) Update the version of `shared-dependencies` to the SNAPSHOT version. 
 5) Call `mvn clean install -DskipTests`.
 6) On your environment, call `sdk use java 22.1.0.r11-grl`. Check that you're using the correct graalvm version by calling `java -version`. The following message should show up:
 
