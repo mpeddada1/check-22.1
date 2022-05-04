@@ -121,6 +121,22 @@ Fatal error:com.oracle.svm.core.util.VMError$HostedError: Option name "PrintFlag
 **Note that both setups work fine when building with 22.0.0.2.**
 
 ## Testing with 22.1.0 runtime and 22.1.0 project pom.xml
+1) Update version of graal-sdk to 22.1.0 in gax [dependencies.properties](https://github.com/googleapis/gax-java/blob/main/dependencies.properties). 
+2) Call `./gradlew publishToMavenLocal`
+3) Make sure that the gax version in shared-dependencies is set to the SNAPSHOT version you're using.
+4) Update the version in `shared-dependencies` to the SNAPSHOT version. 
+5) Call `mvn clean install -DskipTests`.
+6) On your environment, call `sdk use java 22.1.0.r11-grl`. Check that you're using the correct graalvm version by calling `java -version`. The following message should show up:
+
+```
+openjdk version "11.0.15" 2022-04-19
+OpenJDK Runtime Environment GraalVM CE 22.1.0 (build 11.0.15+10-jvmci-22.1-b06)
+OpenJDK 64-Bit Server VM GraalVM CE 22.1.0 (build 11.0.15+10-jvmci-22.1-b06, mixed mode, sharing)
+```
+
+7) In java-pubsub, update the shared-dependencies version to the SNAPSHOT.
+8) Call `mvn clean install -DskipTests`. 
+9) Call `mvn test -Pnative`. 
 
 Testing with Pub/Sub results in the following error at build time:
 
@@ -172,4 +188,4 @@ Caused by: com.oracle.graal.pointsto.constraints.UnsupportedFeatureException: De
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 ```
 
-This was likely introduced with https://github.com/oracle/graal/commit/09f491e57c3f35c7ea6f35ef3cc5dfbbe229b469 and looks like a bug. 
+This was likely introduced with https://github.com/oracle/graal/commit/09f491e57c3f35c7ea6f35ef3cc5dfbbe229b469. 
