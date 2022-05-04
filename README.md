@@ -72,8 +72,10 @@ Existing value: com.oracle.svm.core.jdk.ProtectionDomainSupport@65f00478
 New value: com.oracle.svm.core.jdk.ProtectionDomainSupport@2424686b
 ```
 Related to: https://github.com/oracle/graal/issues/4518
+*Conclusion: GraalVM 22.1.0 runtime is incompatible with graal-sdk 21.3.2 project setup
 
-Building with **21.3.0**:
+
+## GraalVM **21.3.0**:
 
 ```
 openjdk version "11.0.13" 2021-10-19
@@ -112,7 +114,7 @@ Fatal error:com.oracle.svm.core.util.VMError$HostedError: Option name "PrintFlag
 	at com.oracle.svm.hosted.NativeImageGeneratorRunner$JDK9Plus.main(NativeImageGeneratorRunner.java:599)
 
 ```
-*Conclusion: GraalVM 22.1.0 runtime is incompatible with graal-sdk 21.3.2 project setup
+**However GraalVM 21.3.2 amd project pom 21.3.2 work well**
 
 ## Graalvm 22.0.0.2
 
