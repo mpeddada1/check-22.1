@@ -188,4 +188,4 @@ Caused by: com.oracle.graal.pointsto.constraints.UnsupportedFeatureException: De
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 ```
 
-This was likely introduced with https://github.com/oracle/graal/commit/09f491e57c3f35c7ea6f35ef3cc5dfbbe229b469. This issue from a previous GraalVM version looks similar: https://github.com/oracle/graal/issues/2669  
+This was likely introduced with https://github.com/oracle/graal/commit/09f491e57c3f35c7ea6f35ef3cc5dfbbe229b469. This issue from a previous GraalVM version looks similar: https://github.com/oracle/graal/issues/2669. It looks like graal is initializing classes that shouldn't be initialized at build time.
